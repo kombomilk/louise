@@ -1,0 +1,37 @@
+# coding: UTF-8
+require 'sinatra'
+require_relative 'lib/simulator'
+
+class SimServer < Sinatra::Base
+
+  get '/' do
+    haml :index, format: :html5
+  end
+
+  get '/index.haml' do
+    haml :index, format: :html5
+  end
+
+  get '/about.haml' do
+    haml :about, format: :html5
+  end
+
+  get '/conversation.haml' do
+    haml :conversation, format: :html5
+  end
+
+  post '/conversation.haml' do
+    DELIM ||= '&#10;'
+    PROMPT = '> '
+    response = PROMPT + Simulator.response
+    @resp = params['data'].nil? ? '' : params['data']
+    @resp += '> ' + (params['phrase'] || '') + DELIM + response + DELIM
+    haml :conversation, format: :html5
+  end
+
+  get // do
+    'What are you, a Canadian?'
+  end
+end
+
+SimServer.run!

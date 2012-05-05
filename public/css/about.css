@@ -1,0 +1,35 @@
+img {
+  width: 100%;
+}
+
+.large {
+  font-size: 1.5em;
+  line-height: 1.3em;
+}
+
+.big {
+  font-size: 1.3em;
+}
+
+textarea {
+  width: 100%;
+}
+
+textarea {
+	width: 600px;
+	height: 320px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+  background-color: #CCC;
+  color: blue;
+  font-size: 1.4em;
+  font-family: Arial;
+	background-image: url(bg.gif);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+}
+
+button {
+  width: 13em;
+}

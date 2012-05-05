@@ -1,0 +1,19 @@
+%link(rel='stylesheet' href='css/about.css')
+
+%body(onload='document.getElementById("phrase").focus();document.getElementById("data").scrollTop=document.getElementById("data").scrollHeight')
+
+.row
+  .offset3.span8
+    %br
+    %p.large
+      Окно разговора
+    %br
+    .span10
+    %form(action='#' method='post')
+      %textarea(id='data' name='data' readonly='readonly')= @resp
+      %br
+      %br
+      %input(id='phrase' name='phrase')
+        %br
+        %br
+      %button.large(type='submit') Say
