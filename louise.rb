@@ -1,6 +1,7 @@
 # coding: UTF-8
 require 'sinatra'
 require_relative 'lib/simulator'
+require_relative 'lib/data_initializer'
 
 # Represents the web server which 
 # accepts only certain kinds of requests
@@ -46,13 +47,14 @@ class SimServer < Sinatra::Base
   # to produce the response
   #
   post '/conversation.haml' do
+    DataInitializer.read_data if !DataInitializer.initialized?
     phrase = params['phrase'] || ''
     history = params['data']
 
-    response = PROMPT + Simulator.process(phrase)
+    response = "Louise" + PROMPT + Simulator.process(phrase)
 
     @resp = history.nil? ? '' : history
-    @resp += PROMPT + phrase + DELIM 
+    @resp += "You" + PROMPT + phrase + DELIM 
     @resp += response + DELIM
 
     haml :conversation, format: :html5
