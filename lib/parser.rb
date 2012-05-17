@@ -1,3 +1,5 @@
+require 'unicode'
+
 # Module which parses user's input
 # and gets general information about it
 #
@@ -12,6 +14,7 @@ module Parser
   def self.parse(input)
     @data = input.split(@regexp) 
     @data.reject! { |c| c.empty? }
+    @data.map! { |c| Unicode.downcase(c) }
   end
 
   # Returns the array of words

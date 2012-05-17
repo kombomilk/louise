@@ -66,4 +66,8 @@ describe Parser do
     assert_last("где-то на белом свете", "свете")
     assert_last("там, где всегда мороз!", "мороз")
   end
+
+  it "should parse unicode strings" do
+    assert_output("Я ХОЧУ ДоМой", ['я', 'хочу', 'домой'])
+  end
 end
